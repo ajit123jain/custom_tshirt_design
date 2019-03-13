@@ -67,10 +67,10 @@ var line4;
 		      fontWeight: '',
 	  		  hasRotatingPoint:true
 		    });		    
-            canvas.add(textSample);	
-            canvas.item(canvas.item.length-1).hasRotatingPoint = true;    
-            $("#texteditor").css('display', 'block');
-            $("#imageeditor").css('display', 'block');
+        canvas.add(textSample);	
+        canvas.item(canvas.item.length-1).hasRotatingPoint = true;    
+        $("#texteditor").css('display', 'block');
+        $("#imageeditor").css('display', 'block');
 	  	};
 	  	$("#text-string").keyup(function(){	  		
 	  		var activeObject = canvas.getActiveObject();
@@ -103,19 +103,19 @@ var line4;
 		        });
 	  	});	  		  
 	  document.getElementById('remove-selected').onclick = function() {		  
-		    var activeObject = canvas.getActiveObject(),
-		        activeGroup = canvas.getActiveGroup();
+		    var activeObject = canvas.getActiveObject();
+		        // activeGroup = canvas.getActiveGroup();
 		    if (activeObject) {
 		      canvas.remove(activeObject);
 		      $("#text-string").val("");
 		    }
-		    else if (activeGroup) {
-		      var objectsInGroup = activeGroup.getObjects();
-		      canvas.discardActiveGroup();
-		      objectsInGroup.forEach(function(object) {
-		        canvas.remove(object);
-		      });
-		    }
+		    // else if (activeGroup) {
+		    //   var objectsInGroup = activeGroup.getObjects();
+		    //   canvas.discardActiveGroup();
+		    //   objectsInGroup.forEach(function(object) {
+		    //     canvas.remove(object);
+		    //   });
+		    // }
 	  };
 	  document.getElementById('bring-to-front').onclick = function() {		  
 		    var activeObject = canvas.getActiveObject(),
@@ -202,52 +202,40 @@ var line4;
 	      }
 	    });	  
 		$('#text-bgcolor').miniColors({
-			change: function(hex, rgb) {
-			  var activeObject = canvas.getActiveObject();
-		      if (activeObject && activeObject.type === 'text') {
-		    	  activeObject.backgroundColor = this.value;
-		        canvas.renderAll();
-		      }
-			},
-			open: function(hex, rgb) {
-				//
-			},
-			close: function(hex, rgb) {
-				//
-			}
+			// change: function(hex, rgb) {
+   //      console.log(hex)
+			//   var activeObject = canvas.getActiveObject();
+		 //      if (activeObject && activeObject.type === 'text') {
+		 //    	  activeObject.backgroundColor = this.value;
+		 //        canvas.renderAll();
+		 //      }
+			// },
+			// open: function(hex, rgb) {
+			// 	//
+			// },
+			// close: function(hex, rgb) {
+			// 	//
+			// }
 		});		
 		$('#text-fontcolor').miniColors({
-			change: function(hex, rgb) {
-			  var activeObject = canvas.getActiveObject();
-		      if (activeObject && activeObject.type === 'text') {
-		    	  activeObject.fill = this.value;
-		    	  canvas.renderAll();
-		      }
-			},
-			open: function(hex, rgb) {
-				//
-			},
-			close: function(hex, rgb) {
-				//
-			}
+			// change: function(hex, rgb) {
+			//   var activeObject = canvas.getActiveObject();
+		 //      if (activeObject && activeObject.type === 'text') {
+		 //    	  activeObject.fill = this.value;
+		 //    	  canvas.renderAll();
+		 //      }
+			// },
+			// open: function(hex, rgb) {
+			// 	//
+			// },
+			// close: function(hex, rgb) {
+			// 	//
+			// }
+      change: function(value, opacity) {
+        console.log(value + ' - ' + opacity);
+      }
 		});
 		
-		$('#text-strokecolor').miniColors({
-			change: function(hex, rgb) {
-			  var activeObject = canvas.getActiveObject();
-		      if (activeObject && activeObject.type === 'text') {
-		    	  activeObject.strokeStyle = this.value;
-		    	  canvas.renderAll();
-		      }
-			},
-			open: function(hex, rgb) {
-				//
-			},
-			close: function(hex, rgb) {
-				//
-			}
-		});
-	
 		//canvas.add(new fabric.fabric.Object({hasBorders:true,hasControls:false,hasRotatingPoint:false,selectable:false,type:'rect'}));
 	   $("#drawingArea").hover(
 	        function() { 	        	
@@ -275,7 +263,7 @@ var line4;
 		   function() {			   
 			   	if ($(this).attr("data-original-title") == "Show Back View") {
 			   		$(this).attr('data-original-title', 'Show Front View');			        		       
-			        $("#tshirtFacing").attr("src","img/crew_back.png");			        
+			        $("#tshirtFacing").attr("src","/assets/crew_back.png");			        
 			        a = JSON.stringify(canvas);
 			        canvas.clear();
 			        try
@@ -288,7 +276,7 @@ var line4;
 			        
 			    } else {
 			    	$(this).attr('data-original-title', 'Show Back View');			    				    	
-			    	$("#tshirtFacing").attr("src","img/crew_front.png");			    	
+			    	$("#tshirtFacing").attr("src","/assets/crew_front.png");			    	
 			    	b = JSON.stringify(canvas);
 			    	canvas.clear();
 			    	try
@@ -323,7 +311,8 @@ var line4;
 	    if (selectedObject && selectedObject.type === 'text') {
 	    	//display text editor	    	
 	    	$("#texteditor").css('display', 'block');
-	    	$("#text-string").val(selectedObject.getText());	    	
+	    	// $("#text-string").val(selectedObject.getText());
+        $("#text-string").val(selectedObject.get('text'));
 	    	$('#text-fontcolor').miniColors('value',selectedObject.fill);
 	    	$('#text-strokecolor').miniColors('value',selectedObject.strokeStyle);	
 	    	$("#imageeditor").css('display', 'block');

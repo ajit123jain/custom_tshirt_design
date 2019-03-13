@@ -1,0 +1,7 @@
+<a class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Color"><input type="hidden" id="text-fontcolor" class="color-picker miniColors" size="7" value="#000000" maxlength="7" autocomplete="off"><span class="miniColors-triggerWrap"><a class="miniColors-trigger" style="background-color: #000000" href="#" data-original-title=""></a></span></a>
+<a class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Border Color"><input type="hidden" id="text-strokecolor" class="color-picker miniColors" size="7" value="#000000" maxlength="7" autocomplete="off"><span class="miniColors-triggerWrap"><a class="miniColors-trigger" style="background-color: #000000" href="#" data-original-title=""></a></span></a>
+
+Colorpicker Rails
+https://bgrins.github.io/spectrum/
+http://bestgems.org/gems/jquery-colorpicker-rails
+https://github.com/kostia/jquery-minicolors-rails

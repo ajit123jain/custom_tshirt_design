@@ -11,15 +11,15 @@ default: &default
 
 development:
   <<: *default
-  database: tshirt_development
+  database: tshirt-develop
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: tshirt_test
+  database: tshirt-test
 
 production:
   <<: *default
-  database: tshirt_production
+  database: tshirt-prod
