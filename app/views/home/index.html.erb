@@ -89,8 +89,8 @@
               <button id="text-italic" class="btn" data-original-title="Italic"><%= image_tag "font_italic.png" %></button>
               <button id="text-strike" class="btn" data-original-title="Strike" ><%= image_tag "font_strikethrough.png" %></button>
               <button id="text-underline" class="btn" data-original-title="Underline"><%= image_tag "font_underline.png" %></button>
-              <a class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Color"><input type="hidden" id="text-fontcolor" class="color-picker" size="7" value="#000000"></a>
-              <a class="btn" href="#" rel="tooltip" data-placement="top" data-original-title="Font Border Color"><input type="hidden" id="text-strokecolor" class="color-picker" size="7" value="#000000"></a>
+              <a class="btn" tabindex="-1" href="javascript:void(0)" rel="tooltip" data-placement="top" data-original-title="Font Color"><input type="hidden" id="text-fontcolor" class="color-picker" size="7" value="#000000"></a>
+              <a class="btn" tabindex="-1" href="javascript:void(0)" rel="tooltip" data-placement="top" data-original-title="Font Border Color"><input type="hidden" id="text-strokecolor" class="color-picker" size="7" value="#000000"></a>
             </div>
             <div class="pull-right" align="" id="imageeditor" style="display:none">
               <div class="btn-group">
@@ -123,7 +123,7 @@
     </div>
   </section>
 </div>
-    
+
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-35639689-1']);
@@ -181,7 +181,7 @@
     var file = e.target.files[0];
     var reader = new FileReader();
     reader.onload = function (f) {
-      var data = f.target.result;                    
+      var data = f.target.result;
       fabric.Image.fromURL(data, function (img) {
         var oImg = img.set({left: 100, top: 100, angle: 30,width:100, height:100}).scale(0.9);
         canvas.add(oImg).renderAll();

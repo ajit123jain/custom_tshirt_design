@@ -14,6 +14,6 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
-//= require jquery.miniColors.min
+//= require jquery.minicolors
 //= require bootstrap.min
 //= require_tree .
